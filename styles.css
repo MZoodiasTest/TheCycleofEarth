@@ -10,9 +10,6 @@ body {
     animation: backgroundAnimation 30s linear infinite alternate;
 }
 
-
-
-
 /* Opcionálisan: konténer stílusa */
 .container {
     max-width: 960px;
