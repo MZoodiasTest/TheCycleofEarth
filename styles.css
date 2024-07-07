@@ -6,7 +6,21 @@ body {
     padding: 0;
     background-color: #000; /* Háttér szín fekete */
     color: #fff; /* Szöveg szín fehér */
+    overflow: hidden; /* a csíkok a teljes háttérben mozognak */
+    animation: backgroundAnimation 30s linear infinite alternate;
 }
+
+
+
+
+/* Opcionálisan: konténer stílusa */
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* O
 
 /* Modal háttér */
 .modal-background {
@@ -108,3 +122,28 @@ footer a {
 footer p {
     margin: 0;
 }
+
+/* CSS a nyelvváltó pozícionálásához */
+#language-selector {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #000;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#language-selector select {
+    width: 70px; /* A választó szélessége */
+    background-color: #000; /* Választó háttérszíne */
+    color: #fff; /* Szövegszín */
+    border: none; /* Határvonal eltávolítása */
+    font-size: 16px; /* Betűméret */
+    padding: 5px; /* Belső tér */
+    border-radius: 3px; /* Kerekített sarok */
+}
+
+#language-selector select:hover {
+    cursor: pointer; /* Mutató mutatása */
+}
+
