@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Alcímek elhelyezése rendezett sorrendben
     headers.forEach(header => {
-        document.querySelector('index').appendChild(header.parentElement);
+        document.querySelector('main').appendChild(header.parentElement);
     });
 
     // Nyelvváltó eseménykezelő
