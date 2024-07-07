@@ -80,13 +80,12 @@ document.addEventListener('DOMContentLoaded', function() {
             modalContent.innerHTML = `<h2>${header.innerText}</h2><p>${content}</p>`;
             modalBackground.style.display = 'block';
         });
-    });
 
     // Modal ablak bezárása, ha a háttérre kattintanak
     modalBackground.addEventListener('click', function(e) {
         if (e.target === modalBackground) {
             modalBackground.style.display = 'none';
         }
-    });
+    );
 
 });
