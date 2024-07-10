@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Room</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+
+        .toolbar {
+            width: 200px;
+            background-color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .toolbar button {
+            width: 80%; 
+            padding: 15px;
+            color: white;
+            background-color: #333;
+            border: none;
+            cursor: pointer;
+            text-align: center; 
+            transition: background-color 0.3s, transform 0.3s; 
+        }
+
+        .toolbar button:hover {
+            background-color: #575757;
+            transform: scale(1.05); 
+        }
+
+        .image-display {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center; 
+            background-color: #252525; 
+            overflow-y: auto;
+        }
+
+        .image-display img {
+            max-width: 200px;
+            max-height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s, box-shadow 0.3s; 
+            cursor: pointer; 
+        }
+
+        .image-display img:hover {
+            transform: scale(1.05); 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+   
+        .modal {
+            display: none; 
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8); 
+        }
+
+        .modal-content {
+            margin: 5% auto; 
+            padding: 20px;
+            width: 90%; 
+            max-width: 900px; 
+            background-color: transparent; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content img {
+            max-width: 100%;
+            max-height: 80vh; 
+            background-color: transparent; 
+        }
+
+        .close {
+            color: #fff;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer; 
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb; 
+            text-decoration: none;
+        }
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <div class="container"> 
+        <div class="toolbar">
+            <button class="home-button" onclick="goToHomePage()">Back to the main</button>
+            <button onclick="showImages('karakter')">Character</button>
+            <button onclick="showImages('material')">Material</button>
+            <button onclick="showImages('mapDesign')">Map Design</button>
+            <button onclick="showImages('mapShowcase')">Map Showcase</button>
+        </div>
+        <div class="image-display" id="image-display">
+        </div>
+    </div>
+
+    <div id="myModal" class="modal" onclick="closeModal()">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img id="modal-img" src="">
+        </div>
+    </div>
+
+    <script>
+        function showImages(category) {
+            const imageDisplay = document.getElementById('image-display');
+            imageDisplay.innerHTML = ''; 
+
+            const images = {
+                karakter: [
+                    'images/karakter1.jpg',
+                    'images/karakter2.jpg',
+                    'images/karakter3.jpg'
+                ],
+                material: [
+                    'images/material1.jpg',
+                    'images/material2.jpg',
+                    'images/material3.jpg'
+                ],
+                mapDesign: [
+                    'images/mapDesign1.jpg',
+                    'images/mapDesign2.jpg',
+                    'images/mapDesign3.jpg'
+                ],
+                mapShowcase: [
+                    'images/mapShowcase1.jpg',
+                    'images/mapShowcase2.jpg',
+                    'images/mapShowcase3.jpg'
+                ],
+
+            };
+
+            images[category].forEach(src => {
+                const img = document.createElement('img');
+                img.src = src;
+                img.onclick = () => openModal(src); 
+                imageDisplay.appendChild(img);
+            });
+        }
+
+        function goToHomePage() {
+            window.location.href = "index.html";
+        }
+
+        function openModal(src) {
+            const modal = document.getElementById('myModal');
+            modal.style.display = "block";
+            document.getElementById('modal-img').src = src;
+        }
+
+        function closeModal() {
+            document.getElementById('myModal').style.display = "none";
+        }
+
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('myModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
