@@ -1,2 +1,2 @@
-# TheCycleofEarth
-Game project
+#Game Project
+game project
